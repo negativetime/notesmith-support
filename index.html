@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notesmith — Support</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 17px/1.6 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+         max-width: 720px; margin: 0 auto; padding: 40px 22px 80px; color: #1c1c1e; }
+  @media (prefers-color-scheme: dark) { body { background: #000; color: #e8e8ea; } a { color: #6ca0ff; } }
+  h1 { font-size: 30px; margin-bottom: 4px; }
+  h2 { font-size: 21px; margin-top: 34px; }
+  .updated { color: #8a8a8e; margin-top: 0; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+</style>
+</head>
+<body>
+  <h1>Notesmith — Support</h1>
+  <p class="updated">Have a question, a bug report, or a suggestion? I'd love to hear it.</p>
+
+  <h2>Contact</h2>
+  <p>Email <a href="mailto:joshlangberg@gmail.com">joshlangberg@gmail.com</a> — I read every message.</p>
+
+  <h2>Common questions</h2>
+  <ul>
+    <li><strong>Where are my notes stored?</strong> On this Mac only, in one local file. Notesmith
+    has no account, no sync service and is sandboxed without the network entitlement, so it
+    cannot open a connection at all. You can also point it at a folder to keep a plain Markdown
+    copy of every note, readable with or without the app.</li>
+    <li><strong>How do I import from Evernote or Apple Notes?</strong> Evernote: import an .enex
+    export, which keeps notebooks, tags, dates and internal links intact. Apple Notes: export to
+    Markdown from Apple Notes, then import that folder and point Notesmith at the attachments
+    folder so pictures, PDFs and recordings land back in the right notes.</li>
+    <li><strong>I locked a block and forgot the passphrase. Can you recover it?</strong> No. A
+    locked block uses Argon2id and AES-256-GCM with no account, no key escrow and nothing stored
+    that could open it without the passphrase. Losing the passphrase means losing that block for
+    good — this is deliberate, not a bug.</li>
+    <li><strong>How do I delete a note?</strong> Deleted notes wait in Recently Deleted for 30
+    days before they're gone for good, so an accidental delete is always recoverable in that
+    window.</li>
+    <li><strong>How do I remove everything?</strong> Delete Notesmith from your Applications
+    folder. Since nothing is stored anywhere but this Mac, that's the whole thing.</li>
+    <li><strong>What does the MCP connector do?</strong> It's optional, and lets a connected tool
+    search, read and add notes on your behalf. It runs entirely on your Mac, reaches no network,
+    and never shares a locked block.</li>
+  </ul>
+
+  <h2>Privacy</h2>
+  <p>Notesmith collects no data, has no account, and cannot reach the network — the sandbox
+  entitlement that would allow it is simply not present in the app. Nothing about your notes
+  ever leaves this Mac.</p>
+</body>
+</html>
