@@ -3,51 +3,485 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Notesmith — Support</title>
+<title>Notesmith Privacy and Support</title>
+<!--
+  Published 2026-09-16 for the Notesmith App Store submission. Checked sentence by
+  sentence against main. Comments marked DECISION or BUG depend on a call or a fix;
+  the page text describes the code as it is today. The Bibliome and AI-connector
+  sections stay held back until their own LAUNCH gates clear (Notesmith release,
+  privatenote-mcp on PyPI) — see the git history for that drafted text.
+-->
 <style>
   :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
   body { font: 17px/1.6 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
-         max-width: 720px; margin: 0 auto; padding: 40px 22px 80px; color: #1c1c1e; }
+         max-width: 720px; margin: 0 auto; padding: 40px 22px 80px; color: #1c1c1e; background: #fff; }
   @media (prefers-color-scheme: dark) { body { background: #000; color: #e8e8ea; } a { color: #6ca0ff; } }
   h1 { font-size: 30px; margin-bottom: 4px; }
-  h2 { font-size: 21px; margin-top: 34px; }
+  h2 { font-size: 23px; margin-top: 46px; }
+  h3 { font-size: 18px; margin: 28px 0 4px; }
   .updated { color: #8a8a8e; margin-top: 0; }
-  ul { padding-left: 22px; }
+  nav { margin: 10px 0 0; font-size: 15px; }
+  ul, ol { padding-left: 22px; }
   li { margin: 6px 0; }
+  code { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+  pre { overflow-x: auto; padding: 10px 12px; border-radius: 8px; background: #f2f2f4; }
+  pre code { overflow-wrap: normal; }
+  @media (prefers-color-scheme: dark) { pre { background: #1c1c1e; } }
+  hr { border: none; border-top: 1px solid #8a8a8e44; margin: 46px 0; }
 </style>
 </head>
 <body>
-  <h1>Notesmith — Support</h1>
-  <p class="updated">Have a question, a bug report, or a suggestion? I'd love to hear it.</p>
 
-  <h2>Contact</h2>
-  <p>Email <a href="mailto:joshlangberg@gmail.com">joshlangberg@gmail.com</a> — I read every message.</p>
+<h1>Notesmith</h1>
+<p class="updated">Privacy policy and support. Last updated September 16, 2026.</p>
+<nav><a href="#privacy">Privacy policy</a> · <a href="#check">Check it yourself</a> · <a href="#support">Support</a></nav>
 
-  <h2>Common questions</h2>
-  <ul>
-    <li><strong>Where are my notes stored?</strong> On this Mac only, in one local file. Notesmith
-    has no account and no server. You can also point it at a folder to keep a plain Markdown
-    copy of every note, readable with or without the app.</li>
-    <li><strong>How do I import from Evernote or Apple Notes?</strong> Evernote: import an .enex
-    export, which keeps notebooks, tags, dates and internal links intact. Apple Notes: export to
-    Markdown from Apple Notes, then import that folder and point Notesmith at the attachments
-    folder so pictures, PDFs and recordings land back in the right notes.</li>
-    <li><strong>I locked a block and forgot the passphrase. Can you recover it?</strong> No. A
-    locked block uses Argon2id and AES-256-GCM with no account, no key escrow and nothing stored
-    that could open it without the passphrase. Losing the passphrase means losing that block for
-    good — this is deliberate, not a bug.</li>
-    <li><strong>How do I delete a note?</strong> Deleted notes wait in Recently Deleted for 30
-    days before they're gone for good, so an accidental delete is always recoverable in that
-    window.</li>
-    <li><strong>How do I remove everything?</strong> Delete Notesmith from your Applications
-    folder. Since nothing is stored anywhere but this Mac, that's the whole thing.</li>
-    <li><strong>What does the MCP connector do?</strong> It's optional, and lets a connected tool
-    search, read and add notes on your behalf. It runs entirely on your Mac, reaches no network,
-    and never shares a locked block.</li>
-  </ul>
+<p>Notesmith is a note app for Mac, iPhone and iPad. It has no account and no server, and the app
+sends me nothing. This page says where your notes are kept. It also lists every way I know of that
+your writing can move, including the ways that belong to Apple.</p>
 
-  <h2>Privacy</h2>
-  <p>Notesmith collects no data and has no account. Nothing about your notes ever leaves the
-  devices you own.</p>
+<h3>The short version</h3>
+<ul>
+  <li>No account, no server, no advertising, no tracking, and no analytics or crash reporting code.</li>
+  <li>Your notes are kept in Notesmith's storage on your devices, and in your backups.</li>
+  <li>Sync is off until you turn it on, and then it goes directly between your paired devices.</li>
+  <li>Text goes anywhere else, such as Apple's Writing Tools, Bibliome or an AI app, only through
+  features you use or turn on.</li>
+  <li>On the Mac you can lock a block with a passphrase that is never stored.</li>
+</ul>
+
+<h2 id="requirements">Requirements</h2>
+<p>Mac: macOS 26 or later. iPhone and iPad: iOS 26 or iPadOS 26 or later.</p>
+<p>The iPhone and iPad app is the smaller of the two. It has no recording, calendar, reminders or
+export, and none of Notesmith's own Apple Intelligence features. It can't lock or unlock a block,
+only show that one is there. Apple's Writing Tools can still work in its editor on devices that
+support them, except in a note marked Never Share with AI. Where a section below says Mac, it applies only to the Mac.</p>
+
+<hr>
+
+<h2 id="privacy">Privacy policy</h2>
+
+<h3 id="collect">What I collect</h3>
+<p>Nothing through the app. Notesmith has no account, no server, no advertising and no tracking.
+It contains no analytics or crash reporting code from anyone, and it sends me nothing about your
+notes, your searches or how you use it.</p>
+<p>Three things can reach me:</p>
+<ul>
+  <li>If you turned on Apple's option to share with app developers, Apple may pass crash reports and
+  usage statistics about Notesmith on to me. In a TestFlight beta, Apple sends me crash reports
+  whatever that setting says, along with any feedback you send through TestFlight.</li>
+  <li>If you email me, I receive your address and whatever you send.</li>
+  <li>If you choose to send me the performance log, I receive that file.</li>
+</ul>
+<p>I use these only to fix problems in Notesmith and to reply to you.</p>
+<!-- DECISION: the line above is a commitment. Also confirm whether you look at App Store Connect crash and usage data. -->
+
+<h3 id="storage">Where your notes are kept</h3>
+<ul>
+  <li>On the Mac, your library is a database inside Notesmith's own storage at
+  <code>~/Library/Containers/com.langberg.privatenote</code>, with pictures, PDFs and recordings as
+  separate files beside it.</li>
+  <li>On iPhone and iPad, your notes live inside the app's own storage and don't appear in the Files
+  app.</li>
+  <li>A page you save with Save to Notesmith waits in
+  <code>~/Library/Group Containers/group.com.langberg.privatenote</code> until Notesmith next
+  opens.</li>
+  <li>When you use Share Note, Notesmith leaves a copy of the note, and of its attachments if you
+  included them, in a temporary folder that it doesn't clean up.</li>
+  <!-- BUG: the NotesmithShare-<UUID> temp folder is never deleted. Fix, then drop this bullet. -->
+</ul>
+<p>Notesmith doesn't encrypt the database as a whole. It relies on your device's own protection.</p>
+<ul>
+  <li>On a Mac, that is FileVault, if you have turned it on.</li>
+  <li>On iPhone and iPad, iOS encrypts the app's files with a key tied to your passcode, if you have
+  set one. Notesmith uses the standard level of that protection, so once you have unlocked the device
+  after it starts up, the files stay readable even while it is locked.</li>
+</ul>
+<p>On the Mac you can also lock a block with a passphrase (see <a href="#locked">Locked
+blocks</a>).</p>
+<p>Your backups include your notes, because Notesmith excludes nothing from them.</p>
+<ul>
+  <li>Time Machine backs up the Mac copy. It is encrypted only if you chose Encrypt backups for that
+  disk.</li>
+  <li>iCloud Backup includes the iPhone and iPad copy. It is end to end encrypted only if you turned
+  on Advanced Data Protection.</li>
+  <li>A computer backup of an iPhone or iPad is encrypted only if you turned on Encrypt local
+  backup.</li>
+</ul>
+
+<h3 id="sync">Sync between your devices</h3>
+<p>Sync is off until you turn it on. On the Mac it is Settings &gt; Sync &gt; Sync with other
+Notesmith devices on this network. On iPhone and iPad it is Settings &gt; Sync &gt; Sync with my
+other devices, also on the Sync screen.</p>
+<p>When it is on, your paired Notesmith devices exchange notes directly with each other, over the
+local network they share (Wi-Fi, or Ethernet on a Mac) or over a direct Wi-Fi link when they are
+close together. There is no account and no server of mine involved.</p>
+<ul>
+  <li>The first time, you press Pair on one device and Accept on the other. Once two devices pair,
+  each one sends the other its whole library. Any device can call itself any name, so accept a
+  request only when you have just pressed Pair on your own other device.</li>
+  <li>Your notes are encrypted with AES-GCM as they travel, using keys built from a secret your two
+  devices agreed when they paired, on top of the encryption Apple's connection already uses. That
+  secret is kept in each device's library, so backups of the library hold it too.</li>
+  <li>Sync carries notes with their titles, text, tasks, transcripts, tags, notebooks, order and
+  deletions, plus each note's Never Share with AI setting and the address a web clip or imported PDF
+  came from. Locked blocks stay locked, though a hint you added stays readable, as it does on your
+  own device.</li>
+  <li>Attached files don't sync, whether pictures, PDFs, recordings or anything else. The other
+  device does get each note's placeholder for them, including the file's name. Note history, Ask
+  Your Notes conversations and your settings don't sync.</li>
+  <li>While Sync is on, any device on the same local network, or close enough for a direct Wi-Fi
+  link, that looks for Notesmith can see this device's name. On a shared or public network that can
+  include strangers. On a Mac the name is the computer name from System Settings. On iPhone and iPad
+  it is a name like "iPhone (a1b2)".</li>
+  <li>Devices can sync only while Notesmith is open with Sync on in both of them. When that is true
+  and they can reach each other, paired devices reconnect on their own.</li>
+  <li>Turning Sync off stops it at once. Forget stops syncing with that device at once, and unpairs
+  the two devices on both sides. The next time they can reach each other with Sync on, the device
+  where you pressed Forget tells the other one, over a connection that carries no notes. The other
+  device then removes its pairing too and says so. Until that happens, the device where you pressed
+  Forget keeps the pairing secret, only so the other device can tell the message really comes from
+  it. On iPhone and iPad, swipe left on a paired device to find Forget. Neither turning Sync off nor
+  Forget deletes notes that have already synced.</li>
+</ul>
+
+<h3 id="locked">Locked blocks</h3>
+<p>On the Mac you can lock a block of text with a passphrase. Click in the block and choose Format
+&gt; Encrypt Block. Paragraphs, headings, lists, to-dos, quotes, code, callouts and diagrams can be
+locked. Tables, pictures, PDFs and recordings can't.</p>
+<p>The key is derived from your passphrase with Argon2id and the text is encrypted with
+AES-256-GCM. The passphrase isn't stored anywhere and there is no recovery, so if you forget it,
+neither you nor I can open that block.</p>
+<ul>
+  <li>The lock is only as strong as the passphrase. Notesmith accepts any passphrase, and someone
+  with a copy of your library, from this Mac, a backup or a paired device, can try guesses offline.
+  Use a long passphrase and keep the hint vague.</li>
+  <li>Locking protects only that block's text. The note's title, notebook, dates and source address,
+  its other tags and blocks, where the locked block sits, the optional hint, and roughly how long the
+  locked text is all stay readable.</li>
+  <li>If the locked text is a transcript or came from an imported PDF, the recording or PDF file
+  stays unencrypted in Notesmith's storage, and Share Note with Attachments still includes it.</li>
+  <li>A locked block's text is left out of search, Spotlight, export and the Markdown copy. It is also
+  kept from Shortcuts, Bibliome, the AI connector and Notesmith's own Apple Intelligence
+  features.</li>
+  <li>A block stays open right after you lock it, and so does a block you unlock, until you lock it
+  again, open another note or quit Notesmith. Closing the window, locking your screen or letting the
+  Mac sleep doesn't lock it, because Notesmith keeps running.</li>
+  <!-- BUG: CryptoSession's comment says blocks relock on window close and sleep; nothing implements it. -->
+  <li>While a block is open it is ordinary text on your screen. You can copy it, and unless the note
+  is marked Never Share with AI, Apple's Writing Tools can work on it, which may send it to Apple's
+  Private Cloud Compute or to ChatGPT (see <a href="#apple">Apple features</a>).</li>
+  <li>When you lock a block, Notesmith seals that block in the note's history. Earlier copies stay
+  as they were. That means exports and shares, a Markdown copy you edited by hand, the same text if
+  it once sat in a different block or note, Ask Your Notes conversations, to-dos you added to
+  Reminders or Calendar, anything Bibliome or an AI app already received, your backups, and paired
+  devices until they next sync.</li>
+  <li>Locking doesn't scrub the database file. Treat anything written before you locked it as
+  possibly still on disk.</li>
+</ul>
+
+<h3 id="features">Features you use or turn on</h3>
+<p>Everything in this section is on the Mac. Each feature starts when you use it or turn it on,
+except task notifications, which start by themselves. Some keep going after that. Spotlight and the
+Markdown copy stay on, and a Shortcuts automation or an app you have allowed to control Notesmith
+can use it at any time.</p>
+<ul>
+  <li>Apple Intelligence. Suggest a Title, Summarise This Note, Summarize for several selected notes,
+  Find Action Items, Suggest Tags, Suggest Tags for Last Import, suggesting tags for untagged notes,
+  Find Related Notes, Ask Your Notes and Rewrite This Note run on Apple's on-device model. Notesmith
+  doesn't send them to Apple's Private Cloud Compute. Find Related Notes and Ask Your Notes let the
+  model search your other notes as well, leaving out notes marked Never Share with AI. Ask Your Notes saves each question and answer with the
+  note, in your library on that Mac, and the only way to remove a conversation is to delete the
+  note.</li>
+  <li>Translate This Note uses Apple's on-device translation. If a language isn't installed, macOS
+  asks before downloading it. Apple says it may collect usage and performance data, including which
+  app asked and which languages were used, but not the text.</li>
+  <li>Recording and transcription. macOS asks for the microphone the first time you record.
+  Recordings, and audio files you add, are saved in Notesmith's storage on the Mac. Apple's
+  on-device transcriber turns them into text there, using speech models already installed, and
+  Notesmith never downloads speech models itself. The first time, macOS also asks for Speech
+  Recognition. Apple's general description of that permission says speech data may be sent to Apple,
+  but Apple says the transcriber Notesmith uses runs entirely on the device. If no speech model for
+  your Mac's language is installed, or you turn down Speech Recognition, the recording is kept
+  without a transcript.</li>
+  <li>Calendar and Reminders. In the Schedule menu, Add Note to Calendar, Add To-do to Calendar and
+  Add To-do to Reminders put the note's title or the to-do's text, its date and time, and a line
+  naming the note with a link back to it, into your default calendar or reminders list. For a note
+  marked <a href="#never-share">Never Share with AI</a> the note's title is left out. A reminder
+  with a due date also gets an alert. That account then stores and shares it like anything else in
+  it, so a work or shared calendar can show it to other people. Calendar access is write only.
+  Reminders has no write only option, so Notesmith asks for full access, which would let it read,
+  change and delete all your reminders. It only ever adds new ones. You can take either access back
+  in System Settings &gt; Privacy &amp; Security.</li>
+  <li>Task notifications. Notesmith asks to send notifications as soon as any unticked to-do has a
+  due date still to come, including one that arrived by Sync. Once you allow them, each such to-do
+  gets a notification showing its text and the note's title, or no title for a note marked Never
+  Share with AI. Depending on your notification
+  settings, macOS can show it on the lock screen. Nothing is pushed from a server.</li>
+  <li>Photos. Notesmith uses Apple's photo picker, which gives it only the photos and videos you
+  pick. It stores each file as the picker hands it over. That usually includes details saved inside
+  the photo, such as where it was taken, and those details go with the file when you share a note
+  with its attachments.</li>
+  <li>Spotlight. Notesmith adds nothing to Spotlight's index until you turn on Find notes in
+  Spotlight in Settings &gt; Privacy. Then titles, text and tags go into your Mac's Spotlight index,
+  which Apple says stays on the device and isn't shared with Apple or synced. Notes marked Never Share
+  with AI stay out. Turning it off removes them all. The switch covers only Notesmith's library. macOS indexes a Markdown copy folder and exports
+  like any other files, so they can show up in Spotlight either way, unless you exclude that folder
+  in Spotlight's privacy settings.</li>
+  <li>The Markdown copy starts when you choose File &gt; Choose Notes Folder. Notesmith then keeps a
+  plain Markdown file there for every note except templates, Someday/Maybe notes and notes marked
+  Never Share with AI. Locked blocks
+  show as a placeholder. Any app that can open that folder can read the files. If the folder is in
+  iCloud Drive, including Desktop or Documents when you store those in iCloud, iCloud syncs the files,
+  and they are end to end encrypted only with Advanced Data Protection.</li>
+  <!-- BUG: there is no way to stop the Markdown copy once started (MirrorSettings.forget() has no caller). Add a control, then add how to stop it here. -->
+  <li>Export, share and print go where you choose. A locked block appears only as a placeholder,
+  even while it is unlocked. A note imported from a PDF keeps the original file's path as its source.
+  That path can include your Mac user name, and it goes wherever the note's details go: Markdown
+  exports, shared notes, the Markdown copy, the AI connector and your other devices through
+  Sync.</li>
+  <li>Save to Notesmith, in the Share menu, saves the page title, the address and the content or
+  text the sharing app provides. It has no network access and fetches nothing.</li>
+  <li>Shortcuts, Siri and Spotlight can create a note, add to a note, find notes, get a note's text
+  and open a note, whether or not Find notes in Spotlight is on. Find Notes gives a shortcut each
+  matching note's title, date and first line of text. Get Note Text gives it the whole note's text,
+  without locked blocks. A note marked Never Share with AI can't be found, opened, added to or read
+  this way. What the shortcut does next is up to it. Shortcuts' Use Model action, for example, can
+  send text to Apple's Private Cloud Compute or to ChatGPT. What you say to Siri is handled by
+  Apple.</li>
+  <li>Other apps, such as Hookmark, can ask Notesmith for the selected note's title and link, and can
+  create a new note. They can't read a note's text this way, and they get no title or link for a
+  note marked Never Share with AI. macOS normally asks your permission
+  before another app can control Notesmith.</li>
+  <li>Links. A <code>privatenote://</code> link can only open a note or a search. It can't create,
+  change or delete anything. A web link in a note opens in your browser only when you click it.</li>
+</ul>
+
+<h3 id="apple">Apple features inside Notesmith</h3>
+<ul>
+  <li>Writing Tools work in Notesmith's editor. Apple decides where the text is processed. That can be
+  your device, Apple's Private Cloud Compute, or ChatGPT if you turned on that extension. Apple asks
+  before each ChatGPT request unless you turned off Confirm ChatGPT Requests. Notesmith turns them
+  off in a note marked Never Share with AI, on the Mac and on iPhone and iPad.</li>
+  <li>Dictation. Depending on your device and language, Apple processes it on the device or on its
+  servers. If you turned on Improve Siri and Dictation, Apple also keeps and may review some of
+  it.</li>
+  <li>Copy and paste use the system clipboard. On a Mac, other apps can read it, and Spotlight can
+  keep a clipboard history if you use that feature. On iPhone and iPad, iOS asks before another app
+  reads what you copied. Universal Clipboard can make it available on your other Apple
+  devices.</li>
+</ul>
+<p>These are covered by Apple's privacy policy. A request sent to ChatGPT while you are signed in to
+a ChatGPT account is also covered by OpenAI's policies.</p>
+
+<h3 id="never-share">Never Share with AI</h3>
+<p>Any note can be marked Never Share with AI, on the Mac or on iPhone and iPad, and the mark syncs.
+You can still find, read and edit the note in Notesmith. The mark keeps its writing from more than
+AI:</p>
+<ul>
+  <li>Notesmith's own Apple Intelligence features and Translate This Note won't work on it. Ask Your
+  Notes and Find Related Notes leave it out when they search your other notes.</li>
+  <li>Apple's Writing Tools are turned off in it, on the Mac and on iPhone and iPad.</li>
+  <li>Nothing from it goes to Bibliome. If you mark a note while Check This Note for Contradictions is
+  running, no more of its sentences are sent.</li>
+  <li>Shortcuts and Siri can't find it, open it, add to it or get its text. A shortcut you made before
+  you marked the note finds nothing.</li>
+  <li>Other apps, such as Hookmark, get no title or link for it.</li>
+  <li>It comes out of Spotlight as soon as you mark it.</li>
+  <li>Its file comes out of the Markdown copy folder as soon as you mark it, even if you edited that
+  file. A file that no longer names the note and isn't what Notesmith wrote is left where it is.
+  Unmarking the note writes its file again.</li>
+  <li>The AI connector can't see it.</li>
+  <li>Its title stays out of Calendar, Reminders and task notifications. Add Note to Calendar calls the
+  event "A note in Notesmith". A to-do you add keeps its own words, and its notification says "In one
+  of your notes". Notifications still waiting to appear change when you mark the note. Events and
+  reminders you added before stay as they are.</li>
+</ul>
+<p>These happen on the Mac, apart from Writing Tools. The mark doesn't stop you choosing where a note
+goes: export, sharing, printing, copy and paste, Sync, Calendar and Reminders all still work with it.
+Duplicate keeps the mark on the copy. New Note from Template doesn't pass it on, so mark the new note
+too if you want it kept.</p>
+
+<h3 id="permissions">Permissions Notesmith can ask for</h3>
+<p>Mac:</p>
+<ul>
+  <li>Microphone, the first time you record.</li>
+  <li>Speech Recognition, the first time audio is transcribed.</li>
+  <li>Calendar, write only, the first time you add an event.</li>
+  <li>Reminders, the first time you add a to-do to Reminders.</li>
+  <li>Notifications, once any to-do has a due date still to come.</li>
+  <li>Local Network, when you first turn on Sync.</li>
+  <li>If Translate This Note needs a language that isn't installed, macOS asks before downloading
+  it.</li>
+</ul>
+<p>iPhone and iPad:</p>
+<ul>
+  <li>Local Network, when you first turn on Sync.</li>
+  <li>iOS may ask whether Notesmith can paste from another app when you tap the link button with text
+  selected, because Notesmith checks what you copied for a web address.</li>
+</ul>
+
+<h3 id="log">The performance log</h3>
+<p>Both apps keep a small log file next to your library, noting moments when the app stopped
+responding. It never records note text, titles, search words or file names. Notesmith never sends it
+anywhere. It records:</p>
+<ul>
+  <li>when the app stopped responding, and for how long</li>
+  <li>which screen was open</li>
+  <li>how long notes took to open</li>
+  <li>on the Mac, the kind of input at the time (typing or scrolling, for example), how many blocks
+  an opened note has, and how long slow searches took with how many results</li>
+  <li>on iPhone and iPad, when the app moved to the background or back</li>
+</ul>
+<p>On the Mac it is in Settings &gt; Privacy, with Show in Finder and Clear. On iPhone and iPad it is
+on the Sync screen, where you can share it yourself or clear it. Like your notes, it is included in
+backups.</p>
+<p>Notesmith also writes a few lines to Apple's system log on your device, such as the name of a
+file that failed to import or of an audio file being transcribed. Those lines aren't hidden, so
+anyone who can use Console on that Mac, or on a Mac your iPhone is connected to, can read them.
+Notesmith doesn't send that log anywhere.</p>
+
+<h3 id="deleting">Deleting your notes</h3>
+<ul>
+  <li>A deleted note waits in Recently Deleted for 30 days and is removed the next time Notesmith is
+  open after that. Delete Now on the Mac, Delete Forever on iPhone and iPad, or Empty Trash removes it
+  sooner.</li>
+  <li>Removing a note doesn't scrub the database file, so pieces of it can stay on disk until they
+  are overwritten. Backups made before then keep their copy.</li>
+  <li>Delete Now, Delete Forever and Empty Trash reach your paired devices too. The next time they
+  sync, the note is removed from each one, whether it was in that device's Recently Deleted or still
+  in its notes. If the note was edited on another device after you deleted it, that device keeps it,
+  and if it is still in that device's notes it comes back to this one. A note that simply reaches 30
+  days in Recently Deleted isn't sent anywhere. Each device counts its own 30 days from when the
+  deletion reached it.</li>
+  <li>On the Mac, emptying Recently Deleted, there or on a paired device, also removes a note's
+  attachment files, unless another note still uses them. A note that expires on its own after 30 days leaves its files behind. To
+  remove them, open Settings &gt; Privacy, click Look for Leftovers, then Remove These Files. On
+  iPhone and iPad, attachment files stay until you delete the app.</li>
+  <!-- BUG: attachment files outlive their notes (Mac auto-expiry; iOS never deletes them). Fix, then shorten. -->
+</ul>
+<p>To remove everything from a Mac:</p>
+<ol>
+  <li>Turn off Find notes in Spotlight in Settings &gt; Privacy.</li>
+  <li>Quit Notesmith and delete the app.</li>
+  <li>Move these folders to the Trash, then empty it:
+    <br><code>~/Library/Containers/com.langberg.privatenote</code>
+    <br><code>~/Library/Containers/com.langberg.privatenote.clipper</code>
+    <br><code>~/Library/Group Containers/group.com.langberg.privatenote</code></li>
+  <li>Delete any Markdown copy folder and exports you made, and uninstall the AI connector if you
+  added it.</li>
+</ol>
+<p>Events and reminders you added stay in Calendar and Reminders. Time Machine backups keep their
+copies, and anything an AI app has already read stays with that app.</p>
+<p>Deleting Notesmith from an iPhone or iPad removes its notes from that device. Your other devices
+and your backups keep their own copies.</p>
+
+<h3 id="children">Children</h3>
+<p>Notesmith doesn't collect personal information from children or from anyone else. The only
+things that can reach me are listed under <a href="#collect">What I collect</a>.</p>
+
+<h3 id="changes">Changes</h3>
+<p>If this policy changes, I'll update this page and the date at the top.</p>
+
+<hr>
+
+<h2 id="check">Check it yourself</h2>
+<p>These checks run on a Mac with nothing extra installed.</p>
+
+<h3>What macOS allows Notesmith to do</h3>
+<p>In Terminal:</p>
+<pre><code>codesign -d --entitlements - /Applications/Notesmith.app</code></pre>
+<p>Alongside the usual signing entries, you'll see these permissions.</p>
+<ul>
+  <li><code>app-sandbox</code>: the app is sandboxed, so it reaches only its own storage and whatever
+  the entries below allow.</li>
+  <li><code>application-groups</code>: a shared folder for Save to Notesmith and for the local
+  connection to Bibliome.</li>
+  <li><code>device.audio-input</code>: recording voice notes.</li>
+  <li><code>files.user-selected.read-write</code>: files and folders you pick in an Open or Save
+  window.</li>
+  <li><code>network.client</code> and <code>network.server</code>: Sync needs both. macOS doesn't
+  limit them to your local network. This list shows what Notesmith is allowed to do, and the next
+  check shows what it does.</li>
+  <li><code>personal-information.calendars</code>: adding events and reminders.</li>
+  <li><code>print</code>: printing a note to a printer you choose.</li>
+</ul>
+
+<h3>Which connections it opens</h3>
+<p>With Notesmith open, run this in Terminal, or use a firewall app if you have one:</p>
+<pre><code>nettop -p Notesmith</code></pre>
+<p>With Sync off, nothing in Notesmith's code opens a network connection, so you should see none.
+With Sync on, you'll see it listening for your other devices, talking to the ones you paired, and
+hearing from any nearby Notesmith device that asks to pair.</p>
+<!-- TODO before publishing: measure the Sync-off case on an installed build, launch included. Only Sync on was measured (2026-09-12: one listening TCP port, no outbound connections). -->
+
+<h3>Where your files are</h3>
+<p>In Finder choose Go &gt; Go to Folder and paste:</p>
+<pre><code>~/Library/Containers/com.langberg.privatenote/Data/Library/Application Support/PrivateNote</code></pre>
+<p>Your library database, your attachments and the performance log are there.</p>
+
+<h3>What an AI app has read</h3>
+<p>If you use the connector, Settings &gt; Connections shows under What has been read how many notes
+have been sent to a connected app, counting every search result and every repeat, and the titles of
+recent ones. The connector writes this record itself, so if it can't write it, the list stays
+empty.</p>
+
+<h3>A locked block</h3>
+<p>Click in a block and choose Format &gt; Encrypt Block. Then export the note, or search your
+library for a word that appears only inside that block. The export shows a placeholder where the
+block was, and the search finds nothing.</p>
+
+<h3>Third-party code</h3>
+<p>On the Mac, Notesmith includes GRDB (the database), SwiftMath (math formulas), which is based on
+iosMath, with its bundled math fonts, Argon2 (turning your passphrase into a key) and Mermaid
+(diagrams), which itself contains smaller open source libraries such as DOMPurify. The iPhone and
+iPad app includes GRDB and Argon2. None of them connects to the internet, and Mermaid runs inside
+Notesmith with every web request blocked. The licences for all of them, including the math fonts and
+every library inside Mermaid, are in Settings &gt; About on the Mac, and under Acknowledgements in
+Settings on iPhone and iPad.</p>
+
+<hr>
+
+<h2 id="support">Support</h2>
+<p>For questions, bug reports or suggestions, email
+<a href="mailto:info@psychosonicconsulting.com">info@psychosonicconsulting.com</a>. I read every
+message. Your address and whatever you send are kept in that mailbox. I use them only to reply to
+you, and I'll delete them if you ask.</p>
+
+<h3>Where are my notes stored?</h3>
+<p>On your own devices, inside Notesmith's own storage. There is no account and no server. See
+<a href="#storage">Where your notes are kept</a>.</p>
+
+<h3>How do I import from Evernote?</h3>
+<p>Export a notebook from Evernote as an .enex file, then import it with File &gt; Import on the Mac
+or the Import menu on iPhone and iPad. Dates, tags, pictures, audio and other attached files such as
+PDFs come across, and so does the web address of a clipped page. An .enex file doesn't record which
+notebook it came from, so you choose whether its name becomes a notebook, a tag or neither. Links
+between Evernote notes become links by note title.</p>
+
+<h3>How do I import from Apple Notes?</h3>
+<p>Export your notes from Apple Notes as Markdown. On the Mac, choose File &gt; Import &gt; Import
+Apple Notes Export and pick the exported folder. Pictures, PDFs and recordings come along with the
+notes. On iPhone and iPad only the text is imported, and the app tells you so.</p>
+
+<h3>Does Notesmith use iCloud?</h3>
+<p>Notesmith doesn't store or sync your notes through iCloud. Sync goes directly between your
+devices. iCloud can still hold a copy in two ways. iCloud Backup includes the iPhone and iPad
+library, and a Markdown copy folder in iCloud Drive is synced by iCloud.</p>
+
+<h3>I locked a block and forgot the passphrase. Can you recover it?</h3>
+<p>No. The passphrase isn't stored anywhere and there is no recovery key, so the passphrase is the
+only way into that block. A short or obvious passphrase, or a hint that gives it away, can still be
+guessed.</p>
+
+<h3>How do I get a deleted note back?</h3>
+<p>Open Recently Deleted and choose Put Back on the Mac, or Restore on iPhone and iPad. Deleted
+notes wait there for 30 days.</p>
+
+<h3>How do I remove everything?</h3>
+<p>See <a href="#deleting">Deleting your notes</a>. On a Mac, deleting the app alone leaves your
+notes in place.</p>
+
 </body>
 </html>
