@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Notesmith Privacy and Support</title>
 <!--
-  Published 2026-09-16 for the Notesmith App Store submission. Checked sentence by
-  sentence against main. Comments marked DECISION or BUG depend on a call or a fix;
-  the page text describes the code as it is today. The Bibliome and AI-connector
+  Published 2026-09-16 for the Notesmith App Store submission, revised 2026-09-20.
+  Checked sentence by sentence against main; the page text describes the code as it
+  is today. The four passages that waited on fixes are settled: share folders are
+  swept, blocks relock on sleep and screen lock, File > Stop Keeping a Copy ends the
+  Markdown copy, and a note's attachment files go with it on every path, including
+  the thirty-day sweep. The Bibliome and AI-connector
   sections stay held back until their own LAUNCH gates clear (Notesmith release,
   privatenote-mcp on PyPI) — see the git history for that drafted text.
 -->
@@ -68,14 +71,16 @@ It contains no analytics or crash reporting code from anyone, and it sends me no
 notes, your searches or how you use it.</p>
 <p>Three things can reach me:</p>
 <ul>
-  <li>If you turned on Apple's option to share with app developers, Apple may pass crash reports and
-  usage statistics about Notesmith on to me. In a TestFlight beta, Apple sends me crash reports
-  whatever that setting says, along with any feedback you send through TestFlight.</li>
+  <li>If you turned on Apple's option to share with app developers, Apple may make crash reports and
+  aggregate usage statistics for Notesmith available to me in App Store Connect. That is Apple's
+  channel, not Notesmith's: I gather nothing myself, the figures do not identify you, and I do not
+  build any picture of you from them. In a TestFlight beta, Apple sends crash reports whatever that
+  setting says, along with any feedback you send through TestFlight.</li>
   <li>If you email me, I receive your address and whatever you send.</li>
   <li>If you choose to send me the performance log, I receive that file.</li>
 </ul>
-<p>I use these only to fix problems in Notesmith and to reply to you.</p>
-<!-- DECISION: the line above is a commitment. Also confirm whether you look at App Store Connect crash and usage data. -->
+<p>I use anything that reaches me only to fix problems in Notesmith and to reply to you. I do not
+sell it, share it or use it for advertising.</p>
 
 <h3 id="storage">Where your notes are kept</h3>
 <ul>
@@ -87,9 +92,9 @@ notes, your searches or how you use it.</p>
   <li>A page you save with Save to Notesmith waits in
   <code>~/Library/Group Containers/group.com.langberg.privatenote</code> until Notesmith next
   opens.</li>
-  <li>When you use Share Note, Notesmith leaves a copy of the note, and of its attachments if you
-  included them, in a temporary folder that it doesn't clean up.</li>
-  <!-- BUG: the NotesmithShare-<UUID> temp folder is never deleted. Fix, then drop this bullet. -->
+  <li>When you use Share Note, Notesmith puts a copy of the note, and of its attachments if you
+  included them, in a temporary folder so the app you share with can read it. Notesmith clears
+  folders older than an hour when it opens and before each new share.</li>
 </ul>
 <p>Notesmith doesn't encrypt the database as a whole. It relies on your device's own protection.</p>
 <ul>
@@ -165,10 +170,9 @@ neither you nor I can open that block.</p>
   <li>A locked block's text is left out of search, Spotlight, export and the Markdown copy. It is also
   kept from Shortcuts, Bibliome, the AI connector and Notesmith's own Apple Intelligence
   features.</li>
-  <li>A block stays open right after you lock it, and so does a block you unlock, until you lock it
-  again, open another note or quit Notesmith. Closing the window, locking your screen or letting the
-  Mac sleep doesn't lock it, because Notesmith keeps running.</li>
-  <!-- BUG: CryptoSession's comment says blocks relock on window close and sleep; nothing implements it. -->
+  <li>A block you unlock stays open until you lock it again, open another note, close the note's
+  window or quit Notesmith. It also locks itself when the Mac sleeps, when the screens sleep, when
+  you lock your screen or start the screen saver, and when you switch to another user account.</li>
   <li>While a block is open it is ordinary text on your screen. You can copy it, and unless the note
   is marked Never Share with AI, Apple's Writing Tools can work on it, which may send it to Apple's
   Private Cloud Compute or to ChatGPT (see <a href="#apple">Apple features</a>).</li>
@@ -235,7 +239,9 @@ can use it at any time.</p>
   show as a placeholder. Any app that can open that folder can read the files. If the folder is in
   iCloud Drive, including Desktop or Documents when you store those in iCloud, iCloud syncs the files,
   and they are end to end encrypted only with Advanced Data Protection.</li>
-  <!-- BUG: there is no way to stop the Markdown copy once started (MirrorSettings.forget() has no caller). Add a control, then add how to stop it here. -->
+  <li>To stop keeping that copy, choose File &gt; Stop Keeping a Copy. Notesmith forgets the folder
+  and writes nothing more to it. The files already there stay where they are, for you to keep or
+  delete.</li>
   <li>Export, share and print go where you choose. A locked block appears only as a placeholder,
   even while it is unlocked. A note imported from a PDF keeps the original file's path as its source.
   That path can include your Mac user name, and it goes wherever the note's details go: Markdown
@@ -355,11 +361,10 @@ Notesmith doesn't send that log anywhere.</p>
   and if it is still in that device's notes it comes back to this one. A note that simply reaches 30
   days in Recently Deleted isn't sent anywhere. Each device counts its own 30 days from when the
   deletion reached it.</li>
-  <li>On the Mac, emptying Recently Deleted, there or on a paired device, also removes a note's
-  attachment files, unless another note still uses them. A note that expires on its own after 30 days leaves its files behind. To
-  remove them, open Settings &gt; Privacy, click Look for Leftovers, then Remove These Files. On
-  iPhone and iPad, attachment files stay until you delete the app.</li>
-  <!-- BUG: attachment files outlive their notes (Mac auto-expiry; iOS never deletes them). Fix, then shorten. -->
+  <li>Emptying Recently Deleted, here or on a paired device, also removes a note's attachment
+  files, unless another note still uses them. So does a note expiring on its own after 30 days. This
+  works the same way on the Mac, iPhone and iPad. If an older version left something behind, open
+  Settings &gt; Privacy on the Mac, click Look for Leftovers, then Remove These Files.</li>
 </ul>
 <p>To remove everything from a Mac:</p>
 <ol>
